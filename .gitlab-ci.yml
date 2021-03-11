@@ -1,0 +1,26 @@
+image: node:latest
+
+stages:
+ - install
+ - deploy
+
+
+
+install:
+  stage: install
+  only: 
+    - master
+  script: 
+    - echo "=====install npm======"
+    - node -v
+    - npm -v
+    - npm install --registry=https://registry.npm.taobao.org
+    - echo "======end install========"
+
+deploy:
+  stage: deploy
+  script:
+    - echo "======deploy======"
+    - npm run build
+    - "====end build====="
+ 
